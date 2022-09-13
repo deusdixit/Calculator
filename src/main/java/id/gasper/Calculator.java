@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    private final Pattern varPattern = Pattern.compile( "(?<var>[a-zA-Z_][a-zA-Z0-9_]*)($|[^a-zA-Z0-9_\\(])" );
+    private final Pattern varPattern = Pattern.compile( "(?<var>[a-zA-Z_]\\w*)($|[^a-zA-Z0-9_(])" );
     private final HashMap<String, Expression> varBucket;
 
     public Calculator() {
@@ -26,7 +26,7 @@ public class Calculator {
             try {
                 result = evalEquation( term );
             } catch (RecursionException re) {
-                return "<" + re.toString() + ">";
+                return "<" + re + ">";
             }
         } else {
             result = eval( term );
@@ -35,7 +35,7 @@ public class Calculator {
     }
 
     private boolean isAssignment(String term) {
-        return term.matches( "(?<var>[a-zA-Z_][a-zA-Z0-9_]*)=([^=])*" );
+        return term.matches( "([a-zA-Z_]\\w*)=([^=])*" );
     }
 
     private Optional<Result> evalEquation(String term) throws RecursionException, IllegalArgumentException {
@@ -44,13 +44,13 @@ public class Calculator {
         Set<String> varB = getVariables( sides[1] );
         if (isAssignment( term )) {
             if (varA.size() == 1) {
-                String var = varA.iterator().next();
-                if (varB.contains( var )) {
+                String variable = varA.iterator().next();
+                if (varB.contains( variable )) {
                     throw new RecursionException();
                 }
                 Expression e = new ExpressionBuilder( sides[1] ).variables( varB ).build();
 
-                varBucket.put( var, e );
+                varBucket.put( variable, e );
                 return eval( e );
             } else {
                 return Optional.empty();
@@ -58,8 +58,8 @@ public class Calculator {
         } else {
             Optional<Result> r1 = eval( sides[0] );
             Optional<Result> r2 = eval( sides[1] );
-            if (r1.isPresent()) {
-                return r1.get().equals( r2 );
+            if (r1.isPresent() && r2.isPresent()) {
+                return Optional.of(r1.get().equalTerm( r2.get() ));
             }
             return Optional.empty();
         }
@@ -67,11 +67,11 @@ public class Calculator {
 
     private Optional<Result> eval(Expression e) throws IllegalArgumentException {
         if (!e.getVariableNames().isEmpty()) {
-            for (String var : e.getVariableNames()) {
-                if (varBucket.containsKey( var )) {
-                    Optional<Result> result;
-                    if ((result = eval( varBucket.get( var ) )).isPresent()) {
-                        e.setVariable( var, result.get().getDouble() );
+            for (String variable : e.getVariableNames()) {
+                if (varBucket.containsKey( variable )) {
+                    Optional<Result> result = eval( varBucket.get( variable ));
+                    if (result.isPresent()) {
+                        e.setVariable( variable, result.get().getDouble() );
                     } else {
                         return Optional.empty();
                     }
@@ -109,6 +109,6 @@ public class Calculator {
 
 
     private String cleanUp(String term) {
-        return term.replaceAll( " ", "" );
+        return term.replace( " ", "" );
     }
 }

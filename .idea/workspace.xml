@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bd1f130-d778-4c76-b594-0473a9085bdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/id/gasper/Application.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/id/gasper/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/id/gasper/RecursionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/id/gasper/Result.java" afterDir="false" />
+    <list default="true" id="3bd1f130-d778-4c76-b594-0473a9085bdd" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/src/main/java/id/gasper/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/id/gasper/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/id/gasper/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/id/gasper/Result.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +26,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2Ehif0hjpHJgve0VC9rIy2knbN8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -45,7 +39,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
 }]]></component>
   <component name="RunManager">
@@ -66,6 +62,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663054318027</updated>
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1663064153795</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663064153795</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,5 +82,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>

@@ -1,7 +1,5 @@
 package id.gasper;
 
-import java.util.Optional;
-
 public class Result {
 
     private final String text;
@@ -22,11 +20,8 @@ public class Result {
         return dValue;
     }
 
-    public Optional<Result> equals(Optional<Result> r) {
-        if ( r.isPresent() ) {
-            return Optional.of( new Result( r.get().equals( this )));
-        }
-        return Optional.empty();
+    public Result equalTerm(Result r) {
+        return new Result( r.equals( this ) );
     }
 
     @Override
@@ -36,6 +31,11 @@ public class Result {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return text.hashCode();
     }
 
     @Override
