@@ -38,7 +38,7 @@ public class Calculator {
         return term.matches( "([a-zA-Z_]\\w*)=([^=])*" );
     }
 
-    private Optional<Result> evalEquation(String term) throws RecursionException, IllegalArgumentException {
+    private Optional<Result> evalEquation(String term) throws RecursionException {
         String[] sides = term.split( "=" );
         Set<String> varA = getVariables( sides[0] );
         Set<String> varB = getVariables( sides[1] );
@@ -65,7 +65,7 @@ public class Calculator {
         }
     }
 
-    private Optional<Result> eval(Expression e) throws IllegalArgumentException {
+    private Optional<Result> eval(Expression e)  {
         if (!e.getVariableNames().isEmpty()) {
             for (String variable : e.getVariableNames()) {
                 if (varBucket.containsKey( variable )) {
@@ -106,7 +106,6 @@ public class Calculator {
         int index = term.indexOf( "=" );
         return index == term.lastIndexOf( "=" ) && index >= 0;
     }
-
 
     private String cleanUp(String term) {
         return term.replace( " ", "" );
